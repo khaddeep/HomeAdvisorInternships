@@ -4,41 +4,39 @@
 //
 //  Created by Deepson Khadka on 1/28/20.
 //
-/*
-"entityId":"1222893113",
-"companyName":"Summit Preservation, LLC",
-"ratingCount":"7",
-"compositeRating":"5.0",
-"companyOverview":"Summit Preservation prides itself on creating beautiful surfaces for your home. You can always expect a great experience with us, a reasonable rate and a quality finish to the job. Call us today!",
-"canadianSP":false,
-"spanishSpeaking":false,
-"phoneNumber":"(330) 555-3136",
-"latitude":39.8873,
-"longitude":-104.8805,
-"servicesOffered":"Flooring & Carpet, Tile",
-"specialty":"Additions & Remodeling",
-"primaryLocation":"Henderson, CO",
-"email":"contact@summitpresllc.biz"
-*/
+
 import UIKit
 
 
-struct List:Decodable{
-    let servicesOffered: String?
 
-}
-
-class ViewController: UIViewController {
-var titlrArray = [String]()
+class ViewController: UITableViewController{
+    
+    @IBOutlet var myTableView: UITableView!
+    var companyArray = [String]()
+    var compositeRatingsArray = [String]()
+    var ratingsCountArray = [String]()
+    
+    
+    
+    //https://learnappmaking.com/table-view-controller-uitableviewcontroller-how-to/
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return companyArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "companyListingsCell", for: indexPath) as! ControlsTableViewCell
+        cell.listingLabel.text = companyArray[indexPath.row]
+        cell.ratingsLabel.text="Rating: "+compositeRatingsArray[indexPath.row]+" | "+ratingsCountArray[indexPath.row]+" rating(s)"
+        return cell
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nestedJsonParser(pathLocation: "pro_data")
-        for services in titlrArray{
-            print(services)
-        }
-        
-}
- 
+    }
+    
     func nestedJsonParser(pathLocation: String){
         guard let path = Bundle.main.path(forResource: pathLocation, ofType: "json") else{
             print("File not found")
@@ -46,23 +44,27 @@ var titlrArray = [String]()
         }
         
         let url = URL(fileURLWithPath: path)
-           do{
-             let data = try Data(contentsOf: url)
+        do{
+            let data = try Data(contentsOf: url)
             let lists = try JSONDecoder().decode([List].self, from: data)
             
-             for information in lists{
-                //If I test null here, it crashes before it reaches this step
-                //print(information.servicesOffered)
-                if information.servicesOffered == nil {
-                    titlrArray.append("Service UnAvailable")
+            for information in lists{
+                if information.companyName == nil {
+                    companyArray.append("UnListed")
+                    compositeRatingsArray.append("NA")
+                    ratingsCountArray.append("NA")
                 }else{
-                    titlrArray.append(information.servicesOffered!)
+                    companyArray.append(information.companyName!)
+                    compositeRatingsArray.append(information.compositeRating!)
+                    ratingsCountArray.append(information.ratingCount!)
                 }
-               
-               }
-           }catch{
-               print("Got an error")
-           }
-       }
+            }
+            DispatchQueue.main.async {
+                self.myTableView.reloadData()
+            }
+        }catch{
+            print("Got an error")
+        }
+    }
     
 }
