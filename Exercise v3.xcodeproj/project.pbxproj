@@ -17,6 +17,8 @@
 		3473F48123E0900D00391C86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3473F48023E0900D00391C86 /* Assets.xcassets */; };
 		3473F48423E0900D00391C86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3473F48223E0900D00391C86 /* LaunchScreen.storyboard */; };
 		3473F48F23E0900D00391C86 /* Exercise_v3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3473F48E23E0900D00391C86 /* Exercise_v3Tests.swift */; };
+		34F7D46D23E289F20060A2DD /* CommunicationVIewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7D46C23E289F20060A2DD /* CommunicationVIewControllerViewController.swift */; };
+		34F7D47023E28CD60060A2DD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F7D46F23E28CD60060A2DD /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		3473F48A23E0900D00391C86 /* Exercise v3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Exercise v3Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3473F48E23E0900D00391C86 /* Exercise_v3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise_v3Tests.swift; sourceTree = "<group>"; };
 		3473F49023E0900D00391C86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34F7D46C23E289F20060A2DD /* CommunicationVIewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationVIewControllerViewController.swift; sourceTree = "<group>"; };
+		34F7D46F23E28CD60060A2DD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34F7D47023E28CD60060A2DD /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +75,7 @@
 				3473F47623E0900C00391C86 /* Exercise v3 */,
 				3473F48D23E0900D00391C86 /* Exercise v3Tests */,
 				3473F47523E0900C00391C86 /* Products */,
+				34F7D46E23E28CD60060A2DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +95,7 @@
 				3473F47923E0900C00391C86 /* SceneDelegate.swift */,
 				3473F47B23E0900C00391C86 /* ViewController.swift */,
 				34114CB723E1F174003102DD /* List.swift */,
+				34F7D46C23E289F20060A2DD /* CommunicationVIewControllerViewController.swift */,
 				34114CBD23E20424003102DD /* ControlsTableViewCell.swift */,
 				3473F47D23E0900C00391C86 /* Main.storyboard */,
 				3473F48023E0900D00391C86 /* Assets.xcassets */,
@@ -106,6 +113,14 @@
 				3473F49023E0900D00391C86 /* Info.plist */,
 			);
 			path = "Exercise v3Tests";
+			sourceTree = "<group>";
+		};
+		34F7D46E23E28CD60060A2DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34F7D46F23E28CD60060A2DD /* MessageUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +228,7 @@
 				3473F47C23E0900C00391C86 /* ViewController.swift in Sources */,
 				34114CB823E1F174003102DD /* List.swift in Sources */,
 				3473F47823E0900C00391C86 /* AppDelegate.swift in Sources */,
+				34F7D46D23E289F20060A2DD /* CommunicationVIewControllerViewController.swift in Sources */,
 				3473F47A23E0900C00391C86 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,7 +389,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N56U5RLW2C;
 				INFOPLIST_FILE = "Exercise v3/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -382,6 +400,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HomeAdvisor.Exercise-v3.Exercise-v3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -391,7 +410,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N56U5RLW2C;
 				INFOPLIST_FILE = "Exercise v3/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -400,6 +421,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HomeAdvisor.Exercise-v3.Exercise-v3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

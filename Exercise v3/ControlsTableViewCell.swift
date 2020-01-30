@@ -10,6 +10,7 @@ import UIKit
 class ControlsTableViewCell: UITableViewCell {
     @IBOutlet weak var listingLabel: UILabel!
     @IBOutlet weak var ratingsLabel: UILabel!
+    @IBOutlet weak var btnCell: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
