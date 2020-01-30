@@ -10,7 +10,7 @@
         <!--Pros-->
         <scene sceneID="eKp-oz-q35">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="nBH-oF-Ix3" customClass="ViewController" customModule="Exercise_v3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="nBH-oF-Ix3" customClass="ViewController" customModule="Exercise_v3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BxR-a6-RjJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,9 +67,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pros" id="Rhz-c7-D5j"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="myTableView" destination="BxR-a6-RjJ" id="sKy-f5-zAv"/>
-                        <segue destination="9AC-EB-16q" kind="presentation" identifier="detailsViewController" modalPresentationStyle="fullScreen" id="VA4-N7-uUI"/>
+                        <segue destination="9AC-EB-16q" kind="show" identifier="detailsViewController" id="jOv-TE-ycc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lf1-Us-zxV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -81,72 +82,54 @@
             <objects>
                 <viewController title="Details" modalPresentationStyle="fullScreen" id="9AC-EB-16q" customClass="CommunicationVIewControllerViewController" customModule="Exercise_v3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WuW-IR-UyA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rg-Bw-WpZ">
-                                <rect key="frame" x="0.0" y="687" width="414" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aqf-a0-sYa">
+                                <rect key="frame" x="0.0" y="648" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <tabBarItem title="Call" image="phone" catalog="system" id="cgK-bB-Amr"/>
-                                    <tabBarItem title="Email" image="tray.and.arrow.up.fill" catalog="system" id="6X0-8K-LKN"/>
-                                </items>
-                            </tabBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrd-aK-SOA">
-                                <rect key="frame" x="192" y="353" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Call"/>
-                                <connections>
-                                    <action selector="callPhone:" destination="9AC-EB-16q" eventType="touchUpInside" id="ita-Lr-kbX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yu-mL-BWe">
-                                <rect key="frame" x="188.66666666666666" y="408" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Email"/>
-                                <connections>
-                                    <action selector="email_Button:" destination="9AC-EB-16q" eventType="touchUpInside" id="sq0-Nb-VRk"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMP-wW-NVU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="gOl-rl-nf7">
-                                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="rpS-b7-6fn">
+                                    <barButtonItem style="plain" id="zSY-DD-eEo">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8yu-mL-BWe">
+                                            <rect key="frame" x="20" y="7" width="102" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Email">
+                                                <color key="titleColor" red="0.9491942525" green="0.95249611140000001" blue="0.94875985380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <connections>
-                                                <segue destination="nBH-oF-Ix3" kind="showDetail" id="bkK-yu-ZKz"/>
+                                                <action selector="email_Button:" destination="9AC-EB-16q" eventType="touchUpInside" id="sq0-Nb-VRk"/>
                                             </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="xy0-0j-PmB">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mrd-aK-SOA">
+                                            <rect key="frame" x="281" y="7" width="113" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Call">
+                                                <color key="titleColor" red="0.9491942525" green="0.95249611140000001" blue="0.94875985380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="callPhone:" destination="9AC-EB-16q" eventType="touchUpInside" id="ita-Lr-kbX"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                 </items>
-                            </navigationBar>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="TMP-wW-NVU" firstAttribute="trailing" secondItem="iN9-ix-2rQ" secondAttribute="trailing" id="FK4-9y-A9v"/>
-                            <constraint firstItem="TMP-wW-NVU" firstAttribute="top" secondItem="WuW-IR-UyA" secondAttribute="top" id="YFu-Iv-c5Q"/>
-                            <constraint firstItem="TMP-wW-NVU" firstAttribute="leading" secondItem="iN9-ix-2rQ" secondAttribute="leading" id="aoG-19-5WE"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iN9-ix-2rQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ot6-1I-hWv">
-                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="ceJ-0b-fac"/>
-                    </navigationItem>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="emailBarItem" destination="6X0-8K-LKN" id="dzM-oB-UJZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ac-8o-RLK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5572" y="88"/>
+            <point key="canvasLocation" x="5815.9420289855079" y="88.858695652173921"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PE5-ZN-Wiw">
             <objects>
                 <navigationController title="Navigation Controller" id="HDg-wA-iIO" sceneMemberID="viewController">
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dIB-vc-Six">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -160,12 +143,4 @@
             <point key="canvasLocation" x="3851" y="89"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="arrow.left" catalog="system" width="64" height="48"/>
-        <image name="phone" catalog="system" width="64" height="56"/>
-        <image name="tray.and.arrow.up.fill" catalog="system" width="64" height="56"/>
-    </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="bkK-yu-ZKz"/>
-    </inferredMetricsTieBreakers>
 </document>
