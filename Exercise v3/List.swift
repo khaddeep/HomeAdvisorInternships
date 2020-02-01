@@ -14,8 +14,8 @@ struct List:Decodable{
     let ratingCount:String?
     let compositeRating:String?
     let companyOverview:String?
-    let canadianSP:Bool
-    let spanishSpeaking:Bool
+    let canadianSP:Bool?
+    let spanishSpeaking:Bool?
     let phoneNumber:String?
     let latitude:Double?
     let longitude:Double?
@@ -23,4 +23,6 @@ struct List:Decodable{
     let specialty:String?
     let primaryLocation:String?
     let email:String?
+    
+    
 }

@@ -10,17 +10,36 @@ import MessageUI
 class CommunicationVIewControllerViewController: UIViewController, UITabBarControllerDelegate, MFMailComposeViewControllerDelegate {
     var phoneNumber: String = ""
     var emailAddress: String = ""
+    var getproName: String = ""
+    var getspeciality: String = ""
+    var getratingInformation: String = ""
+    var getlocation: String = ""
+    var getservices: String = ""
+    var getoverview: String = ""
+    
+    
+    @IBOutlet weak var proName: UILabel!
+    @IBOutlet weak var speciality: UILabel!
+    @IBOutlet weak var ratingInformation: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var services: UILabel!
+    
+    @IBOutlet weak var overview: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        proName.text=getproName
+        speciality.text=getspeciality
+        ratingInformation.text=getratingInformation
+        location.text=getlocation
+        services.text=getservices
+        overview.text=getoverview
     }
     @IBAction func callPhone(_ sender: Any) {
         dialNumber(number: trimWithCharacters(givenStrings: phoneNumber))
         print(trimWithCharacters(givenStrings: phoneNumber))
     }
-    @IBOutlet weak var emailBarItem: UITabBarItem!
+    
     func dialNumber(number : String) {
 
      if let url = URL(string: "tel://\(number)"),
