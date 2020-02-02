@@ -33,8 +33,8 @@ class ViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "companyListingsCell", for: indexPath) as! ControlsTableViewCell
-        var sortedArray = proNameArray.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
-        cell.listingLabel.text = sortedArray[indexPath.row]
+       // var sortedArray = proNameArray.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
+        cell.listingLabel.text = proNameArray[indexPath.row]
         cell.ratingsLabel.text="Rating: "+compositeRatingsArray[indexPath.row]+" | "+ratingsCountArray[indexPath.row]+" rating(s)"
         cell.btnCell.tag=indexPath.item
         cell.btnCell.addTarget(self, action: #selector(clicked), for: .touchUpInside)
@@ -63,8 +63,17 @@ class ViewController: UITableViewController{
         do{
             let data = try Data(contentsOf: url)
             let lists = try JSONDecoder().decode([List].self, from: data)
+    //Arranges JSON data alphabetically
+    //https://stackoverflow.com/questions/36394813/sorting-of-an-array-alphabetically-in-swift/36394856
+            let newlists = lists.sorted(by: { (Obj1, Obj2) -> Bool in
+                let Obj1_Name = Obj1.companyName ?? ""
+                let Obj2_Name = Obj2.companyName ?? ""
+               return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+            })
             
-            for information in lists{
+            
+            for information in newlists{
+
                 if information.servicesOffered == nil {
                         serviceArray.append("NA")
                 }else{
@@ -92,17 +101,17 @@ class ViewController: UITableViewController{
         // Get the new view controller using segue.destination.
         if(segue.identifier=="detailsViewController"){
         let communicationViewController = segue.destination as! CommunicationVIewControllerViewController
+            // Pass the selected object to the new view controller.
             communicationViewController.emailAddress=emailAddressArray[Int(indexPath)!]
             communicationViewController.phoneNumber=phoneNumberArray[Int(indexPath)!]
-            var sortedArray = proNameArray.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
-            communicationViewController.getproName=sortedArray[Int(indexPath)!]
+            communicationViewController.getproName=proNameArray[Int(indexPath)!]
             communicationViewController.getspeciality=specialityArray[Int(indexPath)!]
             communicationViewController.getratingInformation="Rating: "+compositeRatingsArray[Int(indexPath)!]+" | "+ratingsCountArray[Int(indexPath)!]+" rating(s)"
             communicationViewController.getlocation=locationArray[Int(indexPath)!]
             communicationViewController.getservices=serviceArray[Int(indexPath)!]
             communicationViewController.getoverview=overViewArray[Int(indexPath)!]
         }
-        // Pass the selected object to the new view controller.
+        
     }
     
 }
