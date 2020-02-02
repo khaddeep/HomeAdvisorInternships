@@ -35,45 +35,11 @@ class CommunicationVIewControllerViewController: UIViewController, UITabBarContr
         services.text=getservices
         overview.text=getoverview
     }
-    @IBAction func callPhone(_ sender: Any) {
+    
+    @IBAction func callPhone_Button(_ sender: Any) {
         dialNumber(number: trimWithCharacters(givenStrings: phoneNumber))
-        print(trimWithCharacters(givenStrings: phoneNumber))
     }
     
-    func dialNumber(number : String) {
-
-     if let url = URL(string: "tel://\(number)"),
-       UIApplication.shared.canOpenURL(url) {
-          if #available(iOS 10, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler:nil)
-           } else {
-               UIApplication.shared.openURL(url)
-           }
-       } else {
-                // add error message here
-       }
-    }
-
-    func trimWithCharacters(givenStrings:String) -> String {
-        //var characterSet: Character = [','=',"(",")","-"]
-        
-        return givenStrings.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "")
-    }
-    
-    func sendEmail(emailAddress: String) {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients([emailAddress])
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
-
-            present(mail, animated: true)
-        } else {
-            // show failure alert
-            
-        }
-    }
-
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
@@ -82,13 +48,38 @@ class CommunicationVIewControllerViewController: UIViewController, UITabBarContr
         sendEmail(emailAddress: emailAddress)
     }
     
+    func dialNumber(number : String) {
+        if let url = URL(string: "tel://\(number)"),
+            UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler:nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            // add error message here
+            print("Please!!! Use your Phone to open Dialpad")
+        }
+        print("phone=\(number)")
+    }
     
-    
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
-    
-
+    func sendEmail(emailAddress: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([emailAddress])
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            present(mail, animated: true)
+            
+        } else {
+            // show failure alert
+            print("Please!!! Use your Phone to open Mail")
+        }
+        print("email=\(emailAddress)")
+       
+    }
+    func trimWithCharacters(givenStrings:String) -> String {
+        // trims characterSet: Character = [','=',"(",")","-"]
+        return givenStrings.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "")
+    }
 }
