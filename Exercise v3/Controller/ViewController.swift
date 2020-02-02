@@ -1,7 +1,7 @@
-//
+//  Unfortunately due to heavy course load, I couldn't use design principles and tests
 //  ViewController.swift
 //  Exercise v3
-//
+//  MainViewController responsible for entire app and displaying in table view
 //  Created by Deepson Khadka on 1/28/20.
 //
 
@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UITableViewController{
     
     @IBOutlet var myTableView: UITableView!
+    //Creating Global Empty array for storing data after parsed
     var proNameArray = [String]()
     var compositeRatingsArray = [String]()
     var ratingsCountArray = [String]()
@@ -19,16 +20,24 @@ class ViewController: UITableViewController{
     var locationArray = [String]()
     var serviceArray = [String]()
     var overViewArray = [String]()
+    var parsedData = [List]()    //Parsed data from json file
+    var colorArray = [UIColor]() //Stores Color information
+    
+    //Keeps track of indexpath.row in TableView controller cell tag
     var indexPath = ""
-    var parsedData = [List]()
-    var colorArray = [UIColor]()
     
-    
+    /// Function that returns count of cells in table view controller
+    /// - Parameters:
+    ///   - tableView: tableViewCell to populate the screen.
+    ///   - section: number of rows on the table
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return proNameArray.count
+        return proNameArray.count //returns the number of company name cell to be created in the tableview controller
     }
     
-    
+    /// Function that displays UI view of the Comany and Ratings in a Table manner
+    /// - Parameters:
+    ///   - tableView: tableViewCell to populate the screen
+    ///   - indexPath: index of the row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "companyListingsCell", for: indexPath) as! ControlsTableViewCell
         cell.listingLabel.text = proNameArray[indexPath.row]
@@ -45,26 +54,28 @@ class ViewController: UITableViewController{
         return cell
     }
     
+    /// Objective C function to make cell clickable
+    /// Reference: https://stackoverflow.com/questions/30611922/how-to-make-cell-clickable-also-the-buttons-on-cell-will-be-clickable-in-swift
+    /// - Parameter sender: holds button information
     @objc func clicked(sender:UIButton){
         indexPath=String(sender.tag)
         performSegue(withIdentifier: "detailsViewController", sender: nil)
-        print(sender.tag)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Calling Parsed function
         parseJsonDataFrom(pathLocation: "pro_data")
     }
     
-    
-    
-    
-    public func parseJsonDataFrom(pathLocation: String){
+    /// Parses the json data
+    /// https://benscheirman.com/2017/06/swift-json/
+    /// - Parameter pathLocation: path of json file
+    func parseJsonDataFrom(pathLocation: String){
         guard let path = Bundle.main.path(forResource: pathLocation, ofType: "json") else{
-            print("File not found")
+            print("File not found") //File Error handling
             return
         }
-        
         let url = URL(fileURLWithPath: path)
         do{
             let data = try Data(contentsOf: url)
@@ -77,9 +88,11 @@ class ViewController: UITableViewController{
                 let obj2Name = Obj2.companyName ?? ""
                 return (obj1Name.localizedCaseInsensitiveCompare(obj2Name) == .orderedAscending)
             })
-            parsedData=sortedJsonData
-            appendAllInformations()
             
+            parsedData=sortedJsonData //Storing parsed data to global array
+            appendAllInformations()   //Calling the function we created
+            
+            //Essentially this just means that sync will block the main thread until the task has finished
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
             }
@@ -88,16 +101,16 @@ class ViewController: UITableViewController{
         }
     }
     
+    /// Function for removing complexity in parseJsonData function
     func appendAllInformations()  {
-        
         for information in parsedData{
-            
+            //Simple Error handling for service offered
             if information.servicesOffered == nil {
                 serviceArray.append("Services Not Available")
             }else{
                 serviceArray.append(information.servicesOffered!)
             }
-            
+            //Storing UIColor according to the requirements
             if (Double(information.compositeRating!)!)>=4 {
                 colorArray.append(UIColor.green)
             }else if (Double(information.compositeRating!)!)<3 && (Double(information.compositeRating!)!)>0 {
@@ -121,6 +134,11 @@ class ViewController: UITableViewController{
         }
     }
     
+    
+    /// Preserving data  for passing data between the segues
+    /// - Parameters:
+    ///   - segue: scene
+    ///   - sender: sender
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         if(segue.identifier=="detailsViewController"){
@@ -140,6 +158,9 @@ class ViewController: UITableViewController{
             }
         }
     }
+    
+    /// Simple function to remove the complexity
+    /// - Parameter informationArray: stores all the information parsed
     func sendInformation(informationArray:[String]) -> String {
         return informationArray[Int(indexPath)!]
     }

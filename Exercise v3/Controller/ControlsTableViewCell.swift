@@ -1,7 +1,7 @@
 //
 //  ControlsTableViewCell.swift
 //  Exercise v3
-//
+//  Simple populated/fired controls from storyboard
 //  Created by Deepson Khadka on 1/29/20.
 //
 
