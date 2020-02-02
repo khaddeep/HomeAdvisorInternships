@@ -35,7 +35,7 @@
 		34114CB723E1F174003102DD /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		34114CBD23E20424003102DD /* ControlsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsTableViewCell.swift; sourceTree = "<group>"; };
 		3459CEC423E1080900828F23 /* pro_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pro_data.json; sourceTree = "<group>"; };
-		3473F47423E0900C00391C86 /* Exercise v3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise v3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3473F47423E0900C00391C86 /* Home Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Advisor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3473F47723E0900C00391C86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3473F47923E0900C00391C86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3473F47B23E0900C00391C86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		3473F47523E0900C00391C86 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3473F47423E0900C00391C86 /* Exercise v3.app */,
+				3473F47423E0900C00391C86 /* Home Advisor.app */,
 				3473F48A23E0900D00391C86 /* Exercise v3Tests.xctest */,
 			);
 			name = Products;
@@ -164,7 +164,7 @@
 			);
 			name = "Exercise v3";
 			productName = "Exercise v3";
-			productReference = 3473F47423E0900C00391C86 /* Exercise v3.app */;
+			productReference = 3473F47423E0900C00391C86 /* Home Advisor.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3473F48923E0900D00391C86 /* Exercise v3Tests */ = {
@@ -423,7 +423,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HomeAdvisor.Exercise-v3.Exercise-v3";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Home Advisor";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -444,7 +444,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HomeAdvisor.Exercise-v3.Exercise-v3";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Home Advisor";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

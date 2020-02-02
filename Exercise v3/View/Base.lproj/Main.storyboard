@@ -10,13 +10,13 @@
         <!--Pros-->
         <scene sceneID="eKp-oz-q35">
             <objects>
-                <tableViewController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="nBH-oF-Ix3" customClass="ViewController" customModule="Exercise_v3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" id="nBH-oF-Ix3" customClass="ViewController" customModule="Home_Advisor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BxR-a6-RjJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyListingsCell" rowHeight="102" id="yx3-aP-2xC" customClass="ControlsTableViewCell" customModule="Exercise_v3" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyListingsCell" rowHeight="102" id="yx3-aP-2xC" customClass="ControlsTableViewCell" customModule="Home_Advisor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yx3-aP-2xC" id="Di5-vp-029">
@@ -46,14 +46,14 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="yNu-qE-fin" firstAttribute="top" secondItem="Di5-vp-029" secondAttribute="top" id="13I-vj-Z7d"/>
                                         <constraint firstAttribute="bottom" secondItem="WTe-VE-IUI" secondAttribute="bottom" constant="10" id="77S-jy-jqN"/>
-                                        <constraint firstAttribute="bottom" secondItem="yNu-qE-fin" secondAttribute="bottom" id="ImW-HV-wSl"/>
+                                        <constraint firstAttribute="trailing" secondItem="yNu-qE-fin" secondAttribute="trailing" id="DS7-n0-bgX"/>
+                                        <constraint firstItem="yNu-qE-fin" firstAttribute="top" secondItem="Di5-vp-029" secondAttribute="top" id="Gwn-Kr-IXb"/>
                                         <constraint firstItem="AIa-0M-BkD" firstAttribute="leading" secondItem="Di5-vp-029" secondAttribute="leading" constant="15" id="ODK-Jn-z05"/>
                                         <constraint firstAttribute="trailing" secondItem="AIa-0M-BkD" secondAttribute="trailing" constant="15" id="Xul-2E-e6p"/>
-                                        <constraint firstAttribute="trailing" secondItem="yNu-qE-fin" secondAttribute="trailing" id="dyU-u6-GBa"/>
-                                        <constraint firstItem="yNu-qE-fin" firstAttribute="leading" secondItem="Di5-vp-029" secondAttribute="leading" id="fns-hL-ToQ"/>
+                                        <constraint firstItem="yNu-qE-fin" firstAttribute="leading" secondItem="Di5-vp-029" secondAttribute="leading" id="j1t-0a-Ni4"/>
                                         <constraint firstItem="WTe-VE-IUI" firstAttribute="leading" secondItem="Di5-vp-029" secondAttribute="leading" constant="15" id="oGU-NS-9Yr"/>
+                                        <constraint firstAttribute="bottom" secondItem="yNu-qE-fin" secondAttribute="bottom" id="pBY-m6-3yL"/>
                                         <constraint firstItem="WTe-VE-IUI" firstAttribute="top" secondItem="AIa-0M-BkD" secondAttribute="bottom" constant="10" id="v3i-fZ-mNj"/>
                                         <constraint firstAttribute="trailing" secondItem="WTe-VE-IUI" secondAttribute="trailing" constant="15" id="vtV-uy-1RK"/>
                                         <constraint firstItem="AIa-0M-BkD" firstAttribute="top" secondItem="Di5-vp-029" secondAttribute="top" constant="10" id="zVM-5s-6ZV"/>
@@ -86,7 +86,7 @@
         <!--Details-->
         <scene sceneID="XWs-2Z-vhE">
             <objects>
-                <viewController title="Details" modalPresentationStyle="fullScreen" id="9AC-EB-16q" customClass="CommunicationVIewControllerViewController" customModule="Exercise_v3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Details" modalPresentationStyle="fullScreen" id="9AC-EB-16q" customClass="CommunicationVIewControllerViewController" customModule="Home_Advisor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WuW-IR-UyA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
